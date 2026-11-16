@@ -1,0 +1,2684 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/9/2026 6:05:13 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ADRIAN"
+  DTS:CreatorName="ADRIAN\saeid"
+  DTS:DTSID="{04D30DAD-2208-4CDC-833D-A23247597956}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{74A34C8E-7015-426A-8DEB-3E84FDDA047A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CM_WeatherCSV]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{DF6ED517-B320-4EFF-A7F0-DE5132EE1C97}"
+      DTS:ObjectName="CM_WeatherCSV">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="4105"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="G:\Business intelligent\1-Business inteligence-Course\13-Stage\Quebec-Energy-BI\01_Data\Weather_Historical_Montreal.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="80"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HourUTC"
+              DTS:DTSID="{9910030C-35E0-4C35-BF65-5D3AE17B8189}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="80"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TemperatureC"
+              DTS:DTSID="{F5D433E9-F561-4C8C-9890-0C841CF698C8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="80"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HumidityPercent"
+              DTS:DTSID="{55D3C8A5-5C90-4C2A-82FB-213901F49ED8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="80"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PrecipitationMM"
+              DTS:DTSID="{03B1DE39-ADFA-4014-951F-00420FF2F136}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Clean_Weather"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6C797C2C-9D78-4273-9E91-36D5EDD8EDB1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Clean_Weather"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Clean_Weather\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Clean_Weather\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\Conditional Split.Inputs[Conditional Split Input].Columns[HourUTC]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="HourUTC"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\Conditional Split.Inputs[Conditional Split Input].Columns[LocalHour]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="LocalHour"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\Conditional Split.Inputs[Conditional Split Input].Columns[TemperatureC]"
+                      cachedDataType="numeric"
+                      cachedName="TemperatureC"
+                      cachedPrecision="9"
+                      cachedScale="3"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[TemperatureC]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\Conditional Split.Inputs[Conditional Split Input].Columns[HumidityPercent]"
+                      cachedDataType="numeric"
+                      cachedName="HumidityPercent"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercent]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\Conditional Split.Inputs[Conditional Split Input].Columns[PrecipitationMM]"
+                      cachedDataType="numeric"
+                      cachedName="PrecipitationMM"
+                      cachedPrecision="12"
+                      cachedScale="3"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrecipitationMM]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Clean_Weather\Conditional Split.Outputs[Valid_Row]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Valid_Row"
+                  synchronousInputId="Package\DFT_Clean_Weather\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">![ISNULL](#{Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]}) &amp;&amp; ![ISNULL](#{Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]}) &amp;&amp; ![ISNULL](#{Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[TemperatureC]}) &amp;&amp; ![ISNULL](#{Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercent]}) &amp;&amp; #{Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercent]} &gt;= 0 &amp;&amp; #{Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercent]} &lt;= 100 &amp;&amp; ![ISNULL](#{Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrecipitationMM]}) &amp;&amp; #{Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrecipitationMM]} &gt;= 0</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(HourUTC) &amp;&amp; !ISNULL(LocalHour) &amp;&amp; !ISNULL(TemperatureC) &amp;&amp; !ISNULL(HumidityPercent) &amp;&amp; HumidityPercent &gt;= 0 &amp;&amp; HumidityPercent &lt;= 100 &amp;&amp; !ISNULL(PrecipitationMM) &amp;&amp; PrecipitationMM &gt;= 0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Clean_Weather\Conditional Split.Outputs[Invalid_Row]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Invalid_Row"
+                  synchronousInputId="Package\DFT_Clean_Weather\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Clean_Weather\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT_Clean_Weather\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Clean_Weather\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Clean_Weather\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Clean_Weather\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Clean_Weather\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Clean_Weather\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Output].Columns[DatasetName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Output].Columns[DatasetName]"
+                      name="DatasetName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,30)"Weather"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,30)"Weather"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Output].Columns[IssueCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="80"
+                      lineageId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Output].Columns[IssueCode]"
+                      name="IssueCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,80)"INVALID_WEATHER_ROW"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,80)"INVALID_WEATHER_ROW"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Clean_Weather\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Clean_Weather\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[wrk].[WeatherClean]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Clean_Weather\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StageRowID]"
+                      cachedDataType="i8"
+                      cachedName="StageRowID"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StageRowID]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageRowID]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HourUTC]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="HourUTC"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTC]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocalHour]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="LocalHour"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocalHour]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TemperatureC]"
+                      cachedDataType="numeric"
+                      cachedName="TemperatureC"
+                      cachedPrecision="9"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TemperatureC]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[TemperatureC]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HumidityPercent]"
+                      cachedDataType="numeric"
+                      cachedName="HumidityPercent"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HumidityPercent]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercent]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PrecipitationMM]"
+                      cachedDataType="numeric"
+                      cachedName="PrecipitationMM"
+                      cachedPrecision="12"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PrecipitationMM]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrecipitationMM]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StageRowID]"
+                      dataType="i8"
+                      name="StageRowID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      name="HourUTC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      name="LocalHour" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TemperatureC]"
+                      dataType="numeric"
+                      name="TemperatureC"
+                      precision="9"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HumidityPercent]"
+                      dataType="numeric"
+                      name="HumidityPercent"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PrecipitationMM]"
+                      dataType="numeric"
+                      name="PrecipitationMM"
+                      precision="12"
+                      scale="3" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Clean_Weather\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Clean_Weather\OLE DB Destination 1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[etl].[DataQualityIssue]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[StageRowID]"
+                      cachedDataType="i8"
+                      cachedName="StageRowID"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[StageRowID]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageRowID]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[DatasetName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="DatasetName"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DatasetName]"
+                      lineageId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Output].Columns[DatasetName]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[IssueCode]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="IssueCode"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[IssueCode]"
+                      lineageId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Output].Columns[IssueCode]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[HourUTCText]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="HourUTCText"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[RawDateText]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTCText]" />
+                    <inputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[TemperatureCText]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="TemperatureCText"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[RawValueText]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[TemperatureCText]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[IssueID]"
+                      dataType="i8"
+                      name="IssueID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DatasetName]"
+                      dataType="wstr"
+                      length="30"
+                      name="DatasetName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[StageRowID]"
+                      dataType="i8"
+                      name="StageRowID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[RawDateText]"
+                      dataType="wstr"
+                      length="64"
+                      name="RawDateText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[RawValueText]"
+                      dataType="wstr"
+                      length="80"
+                      name="RawValueText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[IssueCode]"
+                      dataType="wstr"
+                      length="80"
+                      name="IssueCode" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[LoggedAtUTC]"
+                      dataType="dbTimeStamp2"
+                      name="LoggedAtUTC" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Clean_Weather\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    s.StageRowID,
+    s.HourUTCText,
+    s.TemperatureCText,
+    s.HumidityPercentText,
+    s.PrecipitationMMText,
+
+    p.HourUTC,
+
+    CAST(
+        p.HourUTC AT TIME ZONE 'UTC'
+        AT TIME ZONE 'Eastern Standard Time'
+        AS DATETIME2(0)
+    ) AS LocalHour,
+
+    TRY_CONVERT(
+        DECIMAL(9,3),
+        NULLIF(TRIM(s.TemperatureCText), '')
+    ) AS TemperatureC,
+
+    TRY_CONVERT(
+        DECIMAL(5,2),
+        NULLIF(TRIM(s.HumidityPercentText), '')
+    ) AS HumidityPercent,
+
+    TRY_CONVERT(
+        DECIMAL(12,3),
+        NULLIF(TRIM(s.PrecipitationMMText), '')
+    ) AS PrecipitationMM
+
+FROM stg.WeatherRaw AS s
+
+CROSS APPLY (
+    SELECT
+        NULLIF(TRIM(s.HourUTCText), '') AS CleanHour
+) AS t
+
+CROSS APPLY (
+    SELECT
+        CASE
+            WHEN LEN(t.CleanHour) = 16
+             AND SUBSTRING(t.CleanHour, 11, 1) = 'T'
+            THEN t.CleanHour + ':00'
+            ELSE t.CleanHour
+        END AS NormalizedHour
+) AS n
+
+CROSS APPLY (
+    SELECT
+        TRY_CONVERT(
+            DATETIME2(0),
+            n.NormalizedHour,
+            126
+        ) AS HourUTC
+) AS p;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Clean_Weather\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageRowID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StageRowID]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[StageRowID]"
+                      name="StageRowID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTCText]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HourUTCText]"
+                      length="64"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTCText]"
+                      name="HourUTCText"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[TemperatureCText]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TemperatureCText]"
+                      length="80"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[TemperatureCText]"
+                      name="TemperatureCText"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercentText]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HumidityPercentText]"
+                      length="80"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercentText]"
+                      name="HumidityPercentText"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrecipitationMMText]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrecipitationMMText]"
+                      length="80"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrecipitationMMText]"
+                      name="PrecipitationMMText"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HourUTC]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]"
+                      name="HourUTC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LocalHour]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]"
+                      name="LocalHour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[TemperatureC]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TemperatureC]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[TemperatureC]"
+                      name="TemperatureC"
+                      precision="9"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercent]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HumidityPercent]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercent]"
+                      name="HumidityPercent"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrecipitationMM]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrecipitationMM]"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrecipitationMM]"
+                      name="PrecipitationMM"
+                      precision="12"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StageRowID]"
+                      dataType="i8"
+                      name="StageRowID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HourUTCText]"
+                      dataType="wstr"
+                      length="64"
+                      name="HourUTCText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TemperatureCText]"
+                      dataType="wstr"
+                      length="80"
+                      name="TemperatureCText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HumidityPercentText]"
+                      dataType="wstr"
+                      length="80"
+                      name="HumidityPercentText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrecipitationMMText]"
+                      dataType="wstr"
+                      length="80"
+                      name="PrecipitationMMText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      name="HourUTC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      name="LocalHour" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TemperatureC]"
+                      dataType="numeric"
+                      name="TemperatureC"
+                      precision="9"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HumidityPercent]"
+                      dataType="numeric"
+                      name="HumidityPercent"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrecipitationMM]"
+                      dataType="numeric"
+                      name="PrecipitationMM"
+                      precision="12"
+                      scale="3" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StageRowID]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StageRowID]"
+                      name="StageRowID" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HourUTCText]"
+                      dataType="wstr"
+                      length="64"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HourUTCText]"
+                      name="HourUTCText" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TemperatureCText]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TemperatureCText]"
+                      name="TemperatureCText" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HumidityPercentText]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HumidityPercentText]"
+                      name="HumidityPercentText" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrecipitationMMText]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrecipitationMMText]"
+                      name="PrecipitationMMText" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HourUTC]"
+                      name="HourUTC" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LocalHour]"
+                      name="LocalHour" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TemperatureC]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TemperatureC]"
+                      name="TemperatureC"
+                      precision="9"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HumidityPercent]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HumidityPercent]"
+                      name="HumidityPercent"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrecipitationMM]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrecipitationMM]"
+                      name="PrecipitationMM"
+                      precision="12"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Clean_Weather.Paths[Derived Column Output]"
+              endId="Package\DFT_Clean_Weather\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Clean_Weather\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Clean_Weather.Paths[Invalid_Row]"
+              endId="Package\DFT_Clean_Weather\Derived Column.Inputs[Derived Column Input]"
+              name="Invalid_Row"
+              startId="Package\DFT_Clean_Weather\Conditional Split.Outputs[Invalid_Row]" />
+            <path
+              refId="Package\DFT_Clean_Weather.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Clean_Weather\Conditional Split.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Clean_Weather\OLE DB Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Clean_Weather.Paths[Valid_Row]"
+              endId="Package\DFT_Clean_Weather\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Valid_Row"
+              startId="Package\DFT_Clean_Weather\Conditional Split.Outputs[Valid_Row]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_FactWeather"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{99B37FD9-C15A-444D-9576-088A3DDBBE7B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_FactWeather"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_FactWeather\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[FactWeatherHourly]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactWeather\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HourUTC]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="HourUTC"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTC]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocalHour]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="LocalHour"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocalHour]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TemperatureC]"
+                      cachedDataType="numeric"
+                      cachedName="TemperatureC"
+                      cachedPrecision="9"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TemperatureC]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[TemperatureC]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HumidityPercent]"
+                      cachedDataType="numeric"
+                      cachedName="HumidityPercent"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HumidityPercent]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercent]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PrecipitationMM]"
+                      cachedDataType="numeric"
+                      cachedName="PrecipitationMM"
+                      cachedPrecision="12"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PrecipitationMM]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrecipitationMM]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SourceStageRowID]"
+                      cachedDataType="i8"
+                      cachedName="SourceStageRowID"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceStageRowID]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceStageRowID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WeatherFactID]"
+                      dataType="i8"
+                      name="WeatherFactID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      name="HourUTC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      name="LocalHour" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TemperatureC]"
+                      dataType="numeric"
+                      name="TemperatureC"
+                      precision="9"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HumidityPercent]"
+                      dataType="numeric"
+                      name="HumidityPercent"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PrecipitationMM]"
+                      dataType="numeric"
+                      name="PrecipitationMM"
+                      precision="12"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceStageRowID]"
+                      dataType="i8"
+                      name="SourceStageRowID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactWeather\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactWeather\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    d.DateKey,
+    w.HourUTC,
+    w.LocalHour,
+    w.TemperatureC,
+    w.HumidityPercent,
+    w.PrecipitationMM,
+    w.StageRowID AS SourceStageRowID
+
+FROM wrk.WeatherClean AS w
+
+INNER JOIN dw.DimDate AS d
+    ON d.FullDate = CAST(w.LocalHour AS DATE);</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactWeather\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HourUTC]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]"
+                      name="HourUTC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LocalHour]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]"
+                      name="LocalHour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[TemperatureC]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TemperatureC]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[TemperatureC]"
+                      name="TemperatureC"
+                      precision="9"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercent]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HumidityPercent]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[HumidityPercent]"
+                      name="HumidityPercent"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrecipitationMM]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrecipitationMM]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[PrecipitationMM]"
+                      name="PrecipitationMM"
+                      precision="12"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceStageRowID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SourceStageRowID]"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceStageRowID]"
+                      name="SourceStageRowID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      name="HourUTC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      name="LocalHour" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TemperatureC]"
+                      dataType="numeric"
+                      name="TemperatureC"
+                      precision="9"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HumidityPercent]"
+                      dataType="numeric"
+                      name="HumidityPercent"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PrecipitationMM]"
+                      dataType="numeric"
+                      name="PrecipitationMM"
+                      precision="12"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SourceStageRowID]"
+                      dataType="i8"
+                      name="SourceStageRowID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HourUTC]"
+                      name="HourUTC" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LocalHour]"
+                      name="LocalHour" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TemperatureC]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TemperatureC]"
+                      name="TemperatureC"
+                      precision="9"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HumidityPercent]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HumidityPercent]"
+                      name="HumidityPercent"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrecipitationMM]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PrecipitationMM]"
+                      name="PrecipitationMM"
+                      precision="12"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SourceStageRowID]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SourceStageRowID]"
+                      name="SourceStageRowID" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_FactWeather.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_FactWeather\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_FactWeather\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_Weather_Raw"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0B85EC25-93BA-4916-879E-E3DDA517F599}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_Weather_Raw"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_Weather_Raw\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Weather_Raw\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Data Conversion.Inputs[Data Conversion Input].Columns[HourUTC]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="HourUTC"
+                      lineageId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[HourUTC]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Data Conversion.Inputs[Data Conversion Input].Columns[TemperatureC]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="TemperatureC"
+                      lineageId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[TemperatureC]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Data Conversion.Inputs[Data Conversion Input].Columns[HumidityPercent]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="HumidityPercent"
+                      lineageId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[HumidityPercent]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Data Conversion.Inputs[Data Conversion Input].Columns[PrecipitationMM]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="PrecipitationMM"
+                      lineageId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[PrecipitationMM]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT_Load_Weather_Raw\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[HourUTC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[HourUTC]"
+                      name="HourUTC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[HourUTC]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[TemperatureC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="80"
+                      lineageId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[TemperatureC]"
+                      name="TemperatureC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[TemperatureC]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[HumidityPercent]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[HumidityPercent]"
+                      name="HumidityPercent"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[HumidityPercent]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[PrecipitationMM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="80"
+                      lineageId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[PrecipitationMM]"
+                      name="PrecipitationMM"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[PrecipitationMM]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT_Load_Weather_Raw\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Weather_Raw\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="4105"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Weather_Raw\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_WeatherCSV]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_WeatherCSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[HourUTC]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[HourUTC]"
+                      length="80"
+                      lineageId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[HourUTC]"
+                      name="HourUTC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[TemperatureC]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TemperatureC]"
+                      length="80"
+                      lineageId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[TemperatureC]"
+                      name="TemperatureC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[HumidityPercent]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[HumidityPercent]"
+                      length="80"
+                      lineageId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[HumidityPercent]"
+                      name="HumidityPercent"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[PrecipitationMM]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PrecipitationMM]"
+                      length="80"
+                      lineageId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].Columns[PrecipitationMM]"
+                      name="PrecipitationMM"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[HourUTC]"
+                      codePage="65001"
+                      dataType="str"
+                      length="80"
+                      name="HourUTC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TemperatureC]"
+                      codePage="65001"
+                      dataType="str"
+                      length="80"
+                      name="TemperatureC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[HumidityPercent]"
+                      codePage="65001"
+                      dataType="str"
+                      length="80"
+                      name="HumidityPercent" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PrecipitationMM]"
+                      codePage="65001"
+                      dataType="str"
+                      length="80"
+                      name="PrecipitationMM" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Weather_Raw\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[WeatherRaw]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HourUTC]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="HourUTC"
+                      externalMetadataColumnId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTCText]"
+                      lineageId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[HourUTC]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TemperatureC]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="TemperatureC"
+                      externalMetadataColumnId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TemperatureCText]"
+                      lineageId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[TemperatureC]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HumidityPercent]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="HumidityPercent"
+                      externalMetadataColumnId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HumidityPercentText]"
+                      lineageId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[HumidityPercent]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PrecipitationMM]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="PrecipitationMM"
+                      externalMetadataColumnId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PrecipitationMMText]"
+                      lineageId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output].Columns[PrecipitationMM]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StageRowID]"
+                      dataType="i8"
+                      name="StageRowID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTCText]"
+                      dataType="wstr"
+                      length="64"
+                      name="HourUTCText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TemperatureCText]"
+                      dataType="wstr"
+                      length="80"
+                      name="TemperatureCText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HumidityPercentText]"
+                      dataType="wstr"
+                      length="80"
+                      name="HumidityPercentText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PrecipitationMMText]"
+                      dataType="wstr"
+                      length="80"
+                      name="PrecipitationMMText" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoadedAtUTC]"
+                      dataType="dbTimeStamp2"
+                      name="LoadedAtUTC" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_Weather_Raw.Paths[Data Conversion Output]"
+              endId="Package\DFT_Load_Weather_Raw\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT_Load_Weather_Raw\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DFT_Load_Weather_Raw.Paths[Flat File Source Output]"
+              endId="Package\DFT_Load_Weather_Raw\Data Conversion.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT_Load_Weather_Raw\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Clear_FactWeather"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{841849A4-6F81-47FC-B747-BDBED78BC4D5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Clear_FactWeather"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;TRUNCATE TABLE dw.FactWeatherHourly;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Clear_WeatherOutputs"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8F2BA430-2920-4058-8FEC-0868EFC2A56A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Clear_WeatherOutputs"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;DELETE FROM etl.DataQualityIssue&#xA;WHERE DatasetName = N'Weather';&#xA;&#xA;DELETE FROM wrk.WeatherClean;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Clear_WeatherRaw"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9BD0652A-B1F7-4293-A7CE-5783C1FFCDD6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Clear_WeatherRaw"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;TRUNCATE TABLE stg.WeatherRaw;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Validate_FactWeather"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1BFBFB14-C533-47F5-A507-AB55B80B320B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Validate_FactWeather"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;SET NOCOUNT ON;&#xA;&#xA;DECLARE @ExpectedRows BIGINT;&#xA;DECLARE @ActualRows BIGINT;&#xA;&#xA;-- 1. Expected rows based on DimDate&#xA;SELECT @ExpectedRows = COUNT_BIG(*)&#xA;FROM wrk.WeatherClean AS w&#xA;INNER JOIN dw.DimDate AS d&#xA;    ON d.FullDate = CAST(w.LocalHour AS DATE);&#xA;&#xA;-- 2. Actual rows&#xA;SELECT @ActualRows = COUNT_BIG(*)&#xA;FROM dw.FactWeatherHourly;&#xA;&#xA;IF @ActualRows &lt;&gt; @ExpectedRows&#xA;    THROW 51030,&#xA;        'Weather Fact row count mismatch.',&#xA;        1;&#xA;&#xA;-- 3. Check duplicate UTC hours&#xA;IF EXISTS (&#xA;    SELECT HourUTC&#xA;    FROM dw.FactWeatherHourly&#xA;    GROUP BY HourUTC&#xA;    HAVING COUNT_BIG(*) &gt; 1&#xA;)&#xA;    THROW 51031,&#xA;        'Duplicate Weather UTC hours.',&#xA;        1;&#xA;&#xA;-- 4. Check numerical values&#xA;IF EXISTS (&#xA;    SELECT 1&#xA;    FROM dw.FactWeatherHourly&#xA;    WHERE HumidityPercent NOT BETWEEN 0 AND 100&#xA;       OR PrecipitationMM &lt; 0&#xA;)&#xA;    THROW 51032,&#xA;        'Invalid Weather measurements.',&#xA;        1;&#xA;&#xA;-- 5. Check DateKey matches local date&#xA;IF EXISTS (&#xA;    SELECT 1&#xA;    FROM dw.FactWeatherHourly AS f&#xA;    INNER JOIN dw.DimDate AS d&#xA;        ON f.DateKey = d.DateKey&#xA;    WHERE d.FullDate &lt;&gt; CAST(f.LocalHour AS DATE)&#xA;)&#xA;    THROW 51033,&#xA;        'Weather DateKey mismatch.',&#xA;        1;&#xA;&#xA;-- 6. Verify Demand hours have Weather data&#xA;IF EXISTS (&#xA;    SELECT 1&#xA;    FROM dw.FactDemandHourly AS demand&#xA;    WHERE NOT EXISTS (&#xA;        SELECT 1&#xA;        FROM dw.FactWeatherHourly AS weather&#xA;        WHERE weather.HourUTC = demand.HourUTC&#xA;    )&#xA;)&#xA;    THROW 51034,&#xA;        'Missing Weather data for Demand hours.',&#xA;        1;&#xA;&#xA;PRINT 'Weather Fact validation successful.';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Validate_Weather"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F42DB325-EE9E-4D20-B819-41D3E7C120AF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Validate_Weather"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;SET NOCOUNT ON;&#xA;&#xA;DECLARE @Raw BIGINT;&#xA;DECLARE @Clean BIGINT;&#xA;DECLARE @Invalid BIGINT;&#xA;&#xA;SELECT @Raw = COUNT_BIG(*)&#xA;FROM stg.WeatherRaw;&#xA;&#xA;SELECT @Clean = COUNT_BIG(*)&#xA;FROM wrk.WeatherClean;&#xA;&#xA;SELECT @Invalid = COUNT_BIG(*)&#xA;FROM etl.DataQualityIssue&#xA;WHERE DatasetName = N'Weather'&#xA;  AND IssueCode = N'INVALID_WEATHER_ROW';&#xA;&#xA;-- Check source&#xA;IF @Raw = 0&#xA;    THROW 51020, 'Weather source is empty.', 1;&#xA;&#xA;-- Check row counts&#xA;IF @Raw &lt;&gt; @Clean + @Invalid&#xA;    THROW 51021, 'Weather row count mismatch.', 1;&#xA;&#xA;-- Check duplicate UTC hours&#xA;IF EXISTS (&#xA;    SELECT HourUTC&#xA;    FROM wrk.WeatherClean&#xA;    GROUP BY HourUTC&#xA;    HAVING COUNT_BIG(*) &gt; 1&#xA;)&#xA;    THROW 51022, 'Duplicate Weather hours.', 1;&#xA;&#xA;-- Validate numerical ranges&#xA;IF EXISTS (&#xA;    SELECT 1&#xA;    FROM wrk.WeatherClean&#xA;    WHERE HumidityPercent &lt; 0&#xA;       OR HumidityPercent &gt; 100&#xA;       OR PrecipitationMM &lt; 0&#xA;)&#xA;    THROW 51023, 'Invalid Weather values.', 1;&#xA;&#xA;PRINT 'Weather validation completed successfully.';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{24B42CCF-4813-4F51-BFF2-2395DD2DE357}"
+      DTS:From="Package\SQL_Clear_WeatherRaw"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT_Load_Weather_Raw" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B37BF35A-7D36-4F6D-808B-C278F70C8C4F}"
+      DTS:From="Package\DFT_Load_Weather_Raw"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL_Clear_WeatherOutputs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{C8A99423-8B7F-4655-B56A-623861D541D8}"
+      DTS:From="Package\SQL_Clear_WeatherOutputs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DFT_Clean_Weather" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{D62561FB-F8C5-426A-877A-776AB9F7A673}"
+      DTS:From="Package\DFT_Clean_Weather"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\SQL_Validate_Weather" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{33F51410-4386-41BE-9624-B1C672354688}"
+      DTS:From="Package\SQL_Validate_Weather"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\SQL_Clear_FactWeather" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{8FF56AB5-84C8-4FEC-BD9F-0513DEEFACF0}"
+      DTS:From="Package\SQL_Clear_FactWeather"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\DFT_Load_FactWeather" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{07918279-686A-4148-8A43-6438508934B2}"
+      DTS:From="Package\DFT_Load_FactWeather"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\SQL_Validate_FactWeather" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\SQL_Clear_WeatherRaw"
+          TopLeft="200.714286141554,9.94117646187443" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\DFT_Load_Weather_Raw"
+          TopLeft="205.000000436391,74.9411764048994" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="300.457143288973,51.5411764618744">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.3999999430249"
+              Start="0,0"
+              End="0,15.8999999430249">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.8999999430249" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\SQL_Clear_WeatherOutputs"
+          TopLeft="198.571428994135,139.176470466242" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="303.585714715263,116.541176404899">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,22.6352940613423"
+              Start="0,0"
+              End="0,15.1352940613423">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1352940613423" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\DFT_Clean_Weather"
+          TopLeft="242.142857658316,208.764705699362" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="302.623809992892,180.776470466242">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.9882352331207"
+              Start="0,0"
+              End="0,20.4882352331207">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.4882352331207" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\SQL_Validate_Weather"
+          TopLeft="492.857143906306,115.47058813408" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="357.609524324982,208.764705699362">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="198.714286247991,-51.6941175652828"
+              Start="0,0"
+              End="198.714286247991,-44.1941175652828">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-21.8644034738121" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-21.8644034738121"
+                    Point2="0,-25.8644034738121"
+                    Point3="4,-25.8644034738121" />
+                  <mssgle:LineSegment
+                    End="194.714286247991,-25.8644034738121" />
+                  <mssgle:CubicBezierSegment
+                    Point1="194.714286247991,-25.8644034738121"
+                    Point2="198.714286247991,-25.8644034738121"
+                    Point3="198.714286247991,-29.8644034738121" />
+                  <mssgle:LineSegment
+                    End="198.714286247991,-44.1941175652828" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\SQL_Clear_FactWeather"
+          TopLeft="516.428572527912,190.411764538979" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="614.109524883776,157.07058813408">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.3411764048993"
+              Start="0,0"
+              End="0,25.8411764048993">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.8411764048993" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="Package\DFT_Load_FactWeather"
+          TopLeft="524.285715401781,256.176470363687" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="616.157143964847,232.011764538979">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.1647058247078"
+              Start="0,0"
+              End="0,16.6647058247078">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.6647058247078" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\SQL_Validate_FactWeather"
+          TopLeft="515.714286812106,322.705882070077" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="619.200001106944,297.776470363687">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.9294117063901"
+              Start="0,0"
+              End="0,17.4294117063901">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.4294117063901" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load_Weather_Raw">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\DFT_Load_Weather_Raw\Flat File Source"
+          TopLeft="323.571429260227,19.1176470420662" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\DFT_Load_Weather_Raw\Data Conversion"
+          TopLeft="318.571429249584,96.3529410920135" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Weather_Raw.Paths[Flat File Source Output]"
+          TopLeft="397.471429254905,60.7176470420662">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.6352940499473"
+              Start="0,0"
+              End="0,28.1352940499473">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.1352940499473" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_Load_Weather_Raw\OLE DB Destination"
+          TopLeft="309.285714944102,181.235293958787" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Weather_Raw.Paths[Data Conversion Output]"
+          TopLeft="395.328572096843,137.952941092014">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.2823528667738"
+              Start="0,0"
+              End="0,35.7823528667738">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.7823528667738" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Weather_Raw\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_Clean_Weather">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_Clean_Weather\OLE DB Source"
+          TopLeft="362.384609984664,17.5384612771181" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\DFT_Clean_Weather\Conditional Split"
+          TopLeft="363.846148424424,101.538460025421" />
+        <EdgeLayout
+          Id="Package\DFT_Clean_Weather.Paths[OLE DB Source Output]"
+          TopLeft="439.115379204544,59.1384612771181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.3999987483025"
+              Start="0,0"
+              End="0,34.8999987483025">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.8999987483025" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_Clean_Weather\OLE DB Destination"
+          TopLeft="241.538457939258,177.692305044486" />
+        <EdgeLayout
+          Id="Package\DFT_Clean_Weather.Paths[Valid_Row]"
+          TopLeft="441.046148424424,143.138460025421">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-114.307690485166,34.5538450190654"
+              Start="0,0"
+              End="-114.307690485166,27.0538450190654">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.2769225095327" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.2769225095327"
+                    Point2="0,17.2769225095327"
+                    Point3="-4,17.2769225095327" />
+                  <mssgle:LineSegment
+                    End="-110.307690485166,17.2769225095327" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-110.307690485166,17.2769225095327"
+                    Point2="-114.307690485166,17.2769225095327"
+                    Point3="-114.307690485166,21.2769225095327" />
+                  <mssgle:LineSegment
+                    End="-114.307690485166,27.0538450190654" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-81.0260718050828,22.2769225095327,47.744453125,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT_Clean_Weather\Derived Column"
+          TopLeft="510.769223158176,187.692304895474" />
+        <EdgeLayout
+          Id="Package\DFT_Clean_Weather.Paths[Invalid_Row]"
+          TopLeft="465.446148424424,143.138460025421">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="121.723074733752,44.5538448700538"
+              Start="0,0"
+              End="121.723074733752,37.0538448700538">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.0957154549142" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.0957154549142"
+                    Point2="0,18.0957154549142"
+                    Point3="4,18.0957154549142" />
+                  <mssgle:LineSegment
+                    End="117.723074733752,18.0957154549142" />
+                  <mssgle:CubicBezierSegment
+                    Point1="117.723074733752,18.0957154549142"
+                    Point2="121.723074733752,18.0957154549142"
+                    Point3="121.723074733752,22.0957154549142" />
+                  <mssgle:LineSegment
+                    End="121.723074733752,37.0538448700538" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.0758928356261,23.0957154549142,55.5712890625,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\DFT_Clean_Weather\OLE DB Destination 1"
+          TopLeft="503.076915580493,260.769226883466" />
+        <EdgeLayout
+          Id="Package\DFT_Clean_Weather.Paths[Derived Column Output]"
+          TopLeft="589.923069369334,229.292304895474">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.4769219879921"
+              Start="0,0"
+              End="0,23.9769219879921">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9769219879921" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Clean_Weather\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Clean_Weather\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Clean_Weather\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_Load_FactWeather">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_Load_FactWeather\OLE DB Source"
+          TopLeft="355.615379316302,12.9999998062849" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_Load_FactWeather\OLE DB Destination"
+          TopLeft="345.384610237984,113.076921391946" />
+        <EdgeLayout
+          Id="Package\DFT_Load_FactWeather.Paths[OLE DB Source Output]"
+          TopLeft="430.499994777143,54.5999998062849">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.4769215856608"
+              Start="0,0"
+              End="0,50.9769215856608">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.9769215856608" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactWeather\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactWeather\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

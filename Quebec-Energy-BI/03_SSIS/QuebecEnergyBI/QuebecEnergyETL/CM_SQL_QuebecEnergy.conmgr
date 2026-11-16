@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ADRIAN_MSSQL.test"
+  DTS:DTSID="{62393909-96F6-4C30-B394-48E2E6742C03}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=ADRIAN\MSSQL;Initial Catalog=QuebecEnergyBI;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-QuebecEnergyETL-{62393909-96F6-4C30-B394-48E2E6742C03}ADRIAN\MSSQL.test;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

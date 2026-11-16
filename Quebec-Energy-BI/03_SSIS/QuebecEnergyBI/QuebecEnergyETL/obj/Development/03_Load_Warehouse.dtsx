@@ -1,0 +1,1908 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/8/2026 10:45:27 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ADRIAN"
+  DTS:CreatorName="ADRIAN\saeid"
+  DTS:DTSID="{81D6B54B-C12D-4849-A4E1-406EED5BB5DC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{FB4FD90A-076B-4242-BD9E-3D9B083C76CF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_FactDemand"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{209B2D18-F8E7-4EFB-B760-3221AB26F75E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_FactDemand"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_FactDemand\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[FactDemandHourly]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactDemand\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HourUTC]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="HourUTC"
+                      externalMetadataColumnId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTC]"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocalHour]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="LocalHour"
+                      externalMetadataColumnId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocalHour]"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DemandMW]"
+                      cachedDataType="numeric"
+                      cachedName="DemandMW"
+                      cachedPrecision="20"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DemandMW]"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[DemandMW]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SourceStageRowID]"
+                      cachedDataType="i8"
+                      cachedName="SourceStageRowID"
+                      externalMetadataColumnId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceStageRowID]"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceStageRowID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DemandFactID]"
+                      dataType="i8"
+                      name="DemandFactID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      name="HourUTC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      name="LocalHour" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DemandMW]"
+                      dataType="numeric"
+                      name="DemandMW"
+                      precision="20"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceStageRowID]"
+                      dataType="i8"
+                      name="SourceStageRowID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactDemand\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactDemand\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">;WITH DemandChecked AS (
+    SELECT
+        StageRowID,
+        LocalHour,
+        HourUTC,
+        DemandMW,
+        COUNT(*) OVER (
+            PARTITION BY HourUTC
+        ) AS HourCount
+    FROM wrk.DemandClean
+)
+SELECT
+    d.DateKey,
+    c.HourUTC,
+    c.LocalHour,
+    c.DemandMW,
+    c.StageRowID AS SourceStageRowID
+FROM DemandChecked AS c
+INNER JOIN dw.DimDate AS d
+    ON d.FullDate = CAST(c.LocalHour AS DATE)
+WHERE c.HourCount = 1;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactDemand\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HourUTC]"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]"
+                      name="HourUTC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LocalHour]"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]"
+                      name="LocalHour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[DemandMW]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DemandMW]"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[DemandMW]"
+                      name="DemandMW"
+                      precision="20"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceStageRowID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SourceStageRowID]"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceStageRowID]"
+                      name="SourceStageRowID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      name="HourUTC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      name="LocalHour" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DemandMW]"
+                      dataType="numeric"
+                      name="DemandMW"
+                      precision="20"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SourceStageRowID]"
+                      dataType="i8"
+                      name="SourceStageRowID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HourUTC]"
+                      name="HourUTC" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LocalHour]"
+                      name="LocalHour" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DemandMW]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DemandMW]"
+                      name="DemandMW"
+                      precision="20"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SourceStageRowID]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SourceStageRowID]"
+                      name="SourceStageRowID" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_FactDemand.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_FactDemand\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_FactDemand\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_FactGeneration"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{340ED368-5BC1-4880-89FF-6640FF78F68B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_FactGeneration"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_FactGeneration\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    EnergySourceKey,
+    CAST(SourceCode AS NVARCHAR(30)) AS SourceCode
+FROM dw.DimEnergySource;</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
+    EnergySourceKey,
+    CAST(SourceCode AS NVARCHAR(30)) AS SourceCode
+FROM dw.DimEnergySource;) [refTable]
+where [refTable].[SourceCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EnergySourceKey" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SourceCode" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[SourceCode]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactGeneration\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactGeneration\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\Lookup.Inputs[Lookup Input].Columns[SourceCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SourceCode"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[SourceCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SourceCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_FactGeneration\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Match Output].Columns[SourceCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="30"
+                      lineageId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Match Output].Columns[SourceCode]"
+                      name="SourceCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">SourceCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Match Output].Columns[EnergySourceKey]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Match Output].Columns[EnergySourceKey]"
+                      name="EnergySourceKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">EnergySourceKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_FactGeneration\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_FactGeneration\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactGeneration\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[FactGenerationBySource]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GenerationMW]"
+                      cachedDataType="numeric"
+                      cachedName="GenerationMW"
+                      cachedPrecision="20"
+                      cachedScale="4"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GenerationMW]"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[GenerationMW]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[DateKey]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HourUTC]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="HourUTC"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTC]"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[HourUTC]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocalHour]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="LocalHour"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocalHour]"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[LocalHour]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SourceStageRowID]"
+                      cachedDataType="i8"
+                      cachedName="SourceStageRowID"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceStageRowID]"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[SourceStageRowID]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EnergySourceKey]"
+                      cachedDataType="ui1"
+                      cachedName="EnergySourceKey"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EnergySourceKey]"
+                      lineageId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Match Output].Columns[EnergySourceKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GenerationFactID]"
+                      dataType="i8"
+                      name="GenerationFactID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      name="HourUTC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      name="LocalHour" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EnergySourceKey]"
+                      dataType="ui1"
+                      name="EnergySourceKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GenerationMW]"
+                      dataType="numeric"
+                      name="GenerationMW"
+                      precision="20"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceStageRowID]"
+                      dataType="i8"
+                      name="SourceStageRowID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactGeneration\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH GenerationChecked AS (
+    SELECT
+        StageRowID,
+        LocalHour,
+        HourUTC,
+        HydroelectricMW,
+        WindMW,
+        OtherRenewablesMW,
+        SolarMW,
+        ThermalMW,
+        COUNT(*) OVER (
+            PARTITION BY HourUTC
+        ) AS DuplicateCount
+    FROM wrk.GenerationClean
+)
+SELECT
+    d.DateKey,
+    g.HourUTC,
+    g.LocalHour,
+    g.StageRowID AS SourceStageRowID,
+    g.HydroelectricMW,
+    g.WindMW,
+    g.OtherRenewablesMW,
+    g.SolarMW,
+    g.ThermalMW
+FROM GenerationChecked AS g
+INNER JOIN dw.DimDate AS d
+    ON d.FullDate = CAST(g.LocalHour AS DATE)
+WHERE g.DuplicateCount = 1;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_FactGeneration\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HourUTC]"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]"
+                      name="HourUTC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LocalHour]"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]"
+                      name="LocalHour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceStageRowID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SourceStageRowID]"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceStageRowID]"
+                      name="SourceStageRowID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[HydroelectricMW]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HydroelectricMW]"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[HydroelectricMW]"
+                      name="HydroelectricMW"
+                      precision="20"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[WindMW]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WindMW]"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[WindMW]"
+                      name="WindMW"
+                      precision="20"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[OtherRenewablesMW]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OtherRenewablesMW]"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[OtherRenewablesMW]"
+                      name="OtherRenewablesMW"
+                      precision="20"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[SolarMW]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SolarMW]"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[SolarMW]"
+                      name="SolarMW"
+                      precision="20"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[ThermalMW]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ThermalMW]"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[ThermalMW]"
+                      name="ThermalMW"
+                      precision="20"
+                      scale="4"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      name="HourUTC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      name="LocalHour" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SourceStageRowID]"
+                      dataType="i8"
+                      name="SourceStageRowID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HydroelectricMW]"
+                      dataType="numeric"
+                      name="HydroelectricMW"
+                      precision="20"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WindMW]"
+                      dataType="numeric"
+                      name="WindMW"
+                      precision="20"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OtherRenewablesMW]"
+                      dataType="numeric"
+                      name="OtherRenewablesMW"
+                      precision="20"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SolarMW]"
+                      dataType="numeric"
+                      name="SolarMW"
+                      precision="20"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ThermalMW]"
+                      dataType="numeric"
+                      name="ThermalMW"
+                      precision="20"
+                      scale="4" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HourUTC]"
+                      name="HourUTC" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LocalHour]"
+                      name="LocalHour" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SourceStageRowID]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SourceStageRowID]"
+                      name="SourceStageRowID" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HydroelectricMW]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HydroelectricMW]"
+                      name="HydroelectricMW"
+                      precision="20"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WindMW]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WindMW]"
+                      name="WindMW"
+                      precision="20"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OtherRenewablesMW]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OtherRenewablesMW]"
+                      name="OtherRenewablesMW"
+                      precision="20"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SolarMW]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SolarMW]"
+                      name="SolarMW"
+                      precision="20"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ThermalMW]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ThermalMW]"
+                      name="ThermalMW"
+                      precision="20"
+                      scale="4" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_FactGeneration\Unpivot"
+              componentClassID="Microsoft.UnPivot"
+              contactInfo="Unpivot;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Expands an un-normalized data flow into a more normalized version. Values from multiple columns of a single record expand to multiple records in a single column. For example, expand a table that lists athletic scores with a column for each game to more records and a single score column."
+              name="Unpivot">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_FactGeneration\Unpivot.Inputs[Unpivot Input]"
+                  hasSideEffects="true"
+                  name="Unpivot Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Inputs[Unpivot Input].Columns[HydroelectricMW]"
+                      cachedDataType="numeric"
+                      cachedName="HydroelectricMW"
+                      cachedPrecision="20"
+                      cachedScale="4"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[HydroelectricMW]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[GenerationMW]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">HYDRO</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Inputs[Unpivot Input].Columns[WindMW]"
+                      cachedDataType="numeric"
+                      cachedName="WindMW"
+                      cachedPrecision="20"
+                      cachedScale="4"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[WindMW]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[GenerationMW]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">WIND</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Inputs[Unpivot Input].Columns[OtherRenewablesMW]"
+                      cachedDataType="numeric"
+                      cachedName="OtherRenewablesMW"
+                      cachedPrecision="20"
+                      cachedScale="4"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[OtherRenewablesMW]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[GenerationMW]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">OTHER</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Inputs[Unpivot Input].Columns[SolarMW]"
+                      cachedDataType="numeric"
+                      cachedName="SolarMW"
+                      cachedPrecision="20"
+                      cachedScale="4"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[SolarMW]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[GenerationMW]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">SOLAR</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Inputs[Unpivot Input].Columns[ThermalMW]"
+                      cachedDataType="numeric"
+                      cachedName="ThermalMW"
+                      cachedPrecision="20"
+                      cachedScale="4"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[ThermalMW]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[GenerationMW]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">THERMAL</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Inputs[Unpivot Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[DateKey]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Inputs[Unpivot Input].Columns[HourUTC]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="HourUTC"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[HourUTC]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[HourUTC]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Inputs[Unpivot Input].Columns[LocalHour]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="LocalHour"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocalHour]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[LocalHour]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Inputs[Unpivot Input].Columns[SourceStageRowID]"
+                      cachedDataType="i8"
+                      cachedName="SourceStageRowID"
+                      lineageId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output].Columns[SourceStageRowID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[SourceStageRowID]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output]"
+                  name="Unpivot Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[SourceCode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[SourceCode]"
+                      name="SourceCode">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">true</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[GenerationMW]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[GenerationMW]"
+                      name="GenerationMW"
+                      precision="20"
+                      scale="4">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[DateKey]"
+                      name="DateKey">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[HourUTC]"
+                      name="HourUTC">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[LocalHour]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[LocalHour]"
+                      name="LocalHour">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[SourceStageRowID]"
+                      dataType="i8"
+                      lineageId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output].Columns[SourceStageRowID]"
+                      name="SourceStageRowID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_FactGeneration.Paths[Lookup Match Output]"
+              endId="Package\DFT_Load_FactGeneration\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_FactGeneration\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_FactGeneration.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_FactGeneration\Unpivot.Inputs[Unpivot Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_FactGeneration\OLE DB Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_FactGeneration.Paths[Unpivot Output]"
+              endId="Package\DFT_Load_FactGeneration\Lookup.Inputs[Lookup Input]"
+              name="Unpivot Output"
+              startId="Package\DFT_Load_FactGeneration\Unpivot.Outputs[Unpivot Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Clear_FactDemand"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{18E797EE-1160-47CA-9A8A-2D88155E8D9F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Clear_FactDemand"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;TRUNCATE TABLE dw.FactDemandHourly;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Clear_FactGeneration"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B781C9F8-95B0-47BC-8C2F-4F5CC94ABD83}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Clear_FactGeneration"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;TRUNCATE TABLE dw.FactGenerationBySource;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Load_DimDate"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E2357258-E293-44DD-BB5D-1137555D2EC5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Load_DimDate"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;SET NOCOUNT ON;&#xA;&#xA;;WITH DateBounds AS (&#xA;    SELECT&#xA;        MIN(CAST(LocalHour AS DATE)) AS MinDate,&#xA;        MAX(CAST(LocalHour AS DATE)) AS MaxDate&#xA;    FROM (&#xA;        SELECT LocalHour&#xA;        FROM wrk.DemandClean&#xA;&#xA;        UNION ALL&#xA;&#xA;        SELECT LocalHour&#xA;        FROM wrk.GenerationClean&#xA;    ) AS DataDates&#xA;),&#xA;Calendar AS (&#xA;    SELECT&#xA;        MinDate AS FullDate,&#xA;        MaxDate&#xA;    FROM DateBounds&#xA;    WHERE MinDate IS NOT NULL&#xA;&#xA;    UNION ALL&#xA;&#xA;    SELECT&#xA;        DATEADD(DAY, 1, FullDate),&#xA;        MaxDate&#xA;    FROM Calendar&#xA;    WHERE FullDate &lt; MaxDate&#xA;)&#xA;INSERT INTO dw.DimDate (&#xA;    DateKey,&#xA;    FullDate,&#xA;    CalendarYear,&#xA;    CalendarQuarter,&#xA;    CalendarMonth,&#xA;    DayOfMonth,&#xA;    IsoDayOfWeek,&#xA;    IsWeekend&#xA;)&#xA;SELECT&#xA;    YEAR(c.FullDate) * 10000&#xA;        + MONTH(c.FullDate) * 100&#xA;        + DAY(c.FullDate),&#xA;&#xA;    c.FullDate,&#xA;    YEAR(c.FullDate),&#xA;    DATEPART(QUARTER, c.FullDate),&#xA;    MONTH(c.FullDate),&#xA;    DAY(c.FullDate),&#xA;&#xA;    ((DATEDIFF(DAY, '19000101',&#xA;        c.FullDate) % 7 + 7) % 7) + 1,&#xA;&#xA;    CASE&#xA;        WHEN ((DATEDIFF(DAY, '19000101',&#xA;            c.FullDate) % 7 + 7) % 7) + 1&#xA;             IN (6, 7)&#xA;        THEN 1&#xA;        ELSE 0&#xA;    END&#xA;&#xA;FROM Calendar AS c&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM dw.DimDate AS d&#xA;    WHERE d.FullDate = c.FullDate&#xA;)&#xA;OPTION (MAXRECURSION 0);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Load_DimEnergySource"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{116B4EB1-1B9B-47B2-8CF8-3FA3345E5474}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Load_DimEnergySource"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;SET NOCOUNT ON;&#xA;&#xA;INSERT INTO dw.DimEnergySource (&#xA;    EnergySourceKey,&#xA;    SourceCode,&#xA;    SourceName,&#xA;    IsRenewable&#xA;)&#xA;SELECT&#xA;    s.EnergySourceKey,&#xA;    s.SourceCode,&#xA;    s.SourceName,&#xA;    s.IsRenewable&#xA;FROM (&#xA;    VALUES&#xA;        (1, 'HYDRO', N'Hydroelectric', 1),&#xA;        (2, 'WIND', N'Wind', 1),&#xA;        (3, 'OTHER', N'Other Renewables', 1),&#xA;        (4, 'SOLAR', N'Solar', 1),&#xA;        (5, 'THERMAL', N'Thermal', 0)&#xA;) AS s (&#xA;    EnergySourceKey,&#xA;    SourceCode,&#xA;    SourceName,&#xA;    IsRenewable&#xA;)&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM dw.DimEnergySource AS d&#xA;    WHERE d.EnergySourceKey =&#xA;        s.EnergySourceKey&#xA;);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Validate_Warehouse"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A34CEFEF-D713-4CB8-B390-19E09E3B67B1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Validate_Warehouse"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;SET NOCOUNT ON;&#xA;&#xA;DECLARE @ExpectedDemand BIGINT;&#xA;DECLARE @ExpectedGeneration BIGINT;&#xA;DECLARE @ActualDemand BIGINT;&#xA;DECLARE @ActualGeneration BIGINT;&#xA;&#xA;-- 1. Expected unique Demand hours&#xA;SELECT @ExpectedDemand = COUNT_BIG(*)&#xA;FROM (&#xA;    SELECT HourUTC&#xA;    FROM wrk.DemandClean&#xA;    GROUP BY HourUTC&#xA;    HAVING COUNT_BIG(*) = 1&#xA;) AS D;&#xA;&#xA;-- 2. Expected Generation rows&#xA;SELECT @ExpectedGeneration = COUNT_BIG(*) * 5&#xA;FROM (&#xA;    SELECT HourUTC&#xA;    FROM wrk.GenerationClean&#xA;    GROUP BY HourUTC&#xA;    HAVING COUNT_BIG(*) = 1&#xA;) AS G;&#xA;&#xA;-- 3. Actual Warehouse counts&#xA;SELECT @ActualDemand = COUNT_BIG(*)&#xA;FROM dw.FactDemandHourly;&#xA;&#xA;SELECT @ActualGeneration = COUNT_BIG(*)&#xA;FROM dw.FactGenerationBySource;&#xA;&#xA;-- 4. Demand validation&#xA;IF @ActualDemand &lt;&gt; @ExpectedDemand&#xA;    THROW 51010,&#xA;        'Demand Fact row count mismatch.',&#xA;        1;&#xA;&#xA;-- 5. Generation validation&#xA;IF @ActualGeneration &lt;&gt; @ExpectedGeneration&#xA;    THROW 51011,&#xA;        'Generation Fact row count mismatch.',&#xA;        1;&#xA;&#xA;-- 6. Check five sources per hour&#xA;IF EXISTS (&#xA;    SELECT HourUTC&#xA;    FROM dw.FactGenerationBySource&#xA;    GROUP BY HourUTC&#xA;    HAVING COUNT_BIG(*) &lt;&gt; 5&#xA;        OR COUNT(DISTINCT EnergySourceKey) &lt;&gt; 5&#xA;)&#xA;    THROW 51012,&#xA;        'Incomplete generation source groups.',&#xA;        1;&#xA;&#xA;-- 7. Compare generation totals&#xA;IF EXISTS (&#xA;    SELECT f.SourceStageRowID&#xA;    FROM dw.FactGenerationBySource AS f&#xA;    INNER JOIN wrk.GenerationClean AS g&#xA;        ON f.SourceStageRowID = g.StageRowID&#xA;    GROUP BY f.SourceStageRowID, g.TotalMW&#xA;    HAVING ABS(SUM(f.GenerationMW) - g.TotalMW) &gt; 1&#xA;)&#xA;    THROW 51013,&#xA;        'Generation total mismatch.',&#xA;        1;&#xA;&#xA;PRINT 'Warehouse validation completed successfully.';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{83C919C9-7630-4B8F-943C-B902D54FEEE4}"
+      DTS:From="Package\SQL_Load_DimDate"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL_Load_DimEnergySource" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C377FD25-B0B2-4D30-A6F4-91834C6F5ECF}"
+      DTS:From="Package\SQL_Load_DimEnergySource"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL_Clear_FactDemand" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{1FEA6A42-BE6D-4724-B383-4522FB676CE3}"
+      DTS:From="Package\SQL_Clear_FactDemand"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DFT_Load_FactDemand" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{B4402029-7172-4F3B-BFFC-A1985D42A8CE}"
+      DTS:From="Package\DFT_Load_FactDemand"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\SQL_Clear_FactGeneration" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{358400DD-F93D-480F-9236-A8343DFE1F84}"
+      DTS:From="Package\SQL_Clear_FactGeneration"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\DFT_Load_FactGeneration" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{98C4B347-B755-49D6-802E-802181EACF8F}"
+      DTS:From="Package\DFT_Load_FactGeneration"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\SQL_Validate_Warehouse" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\SQL_Load_DimDate"
+          TopLeft="216.428571889291,14.5294117519703" />
+        <NodeLayout
+          Size="214.4,41.6"
+          Id="Package\SQL_Load_DimEnergySource"
+          TopLeft="202.142857573166,78.7647058133127" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="305.885714731229,56.1294117519703">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,22.6352940613424"
+              Start="0,0"
+              End="0,15.1352940613424">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1352940613424" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\DFT_Load_FactDemand"
+          TopLeft="212.142857594454,215.647058634506" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\SQL_Clear_FactDemand"
+          TopLeft="219.285714752516,144.52941163802" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="312.314286162841,120.364705813313">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.1647058247075"
+              Start="0,0"
+              End="0,16.6647058247075">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.6647058247075" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="311.314286173485,186.12941163802">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.5176469964861"
+              Start="0,0"
+              End="0,22.0176469964861">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.0176469964861" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\SQL_Clear_FactGeneration"
+          TopLeft="435.000000926001,142.235293992972" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="337.742857594454,215.647058634506">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="166.59047666488,-31.8117646415341"
+              Start="0,0"
+              End="166.59047666488,-24.3117646415341">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-11.9167991926413" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-11.9167991926413"
+                    Point2="0,-15.9167991926413"
+                    Point3="4,-15.9167991926413" />
+                  <mssgle:LineSegment
+                    End="162.59047666488,-15.9167991926413" />
+                  <mssgle:CubicBezierSegment
+                    Point1="162.59047666488,-15.9167991926413"
+                    Point2="166.59047666488,-15.9167991926413"
+                    Point3="166.59047666488,-19.9167991926413" />
+                  <mssgle:LineSegment
+                    End="166.59047666488,-24.3117646415341" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\DFT_Load_FactGeneration"
+          TopLeft="468.571429568894,221.764705687968" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="569.919048580781,183.835293992972">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.9294116949953"
+              Start="0,0"
+              End="0,30.4294116949953">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.4294116949953" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\SQL_Validate_Warehouse"
+          TopLeft="474.285715295344,297.47058797455" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="572.028572432119,263.364705687968">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.105882286582"
+              Start="0,0"
+              End="0,26.605882286582">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.605882286582" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load_FactDemand">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_Load_FactDemand\OLE DB Source"
+          TopLeft="338.571429292158,14.5294117519703" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_Load_FactDemand\OLE DB Destination"
+          TopLeft="329.285714986677,109.352941080619" />
+        <EdgeLayout
+          Id="Package\DFT_Load_FactDemand.Paths[OLE DB Source Output]"
+          TopLeft="413.928572139418,56.1294117519703">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.2235293286482"
+              Start="0,0"
+              End="0,45.7235293286482">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.7235293286482" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactDemand\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactDemand\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_Load_FactGeneration">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT_Load_FactGeneration\OLE DB Source"
+          TopLeft="414.499993823469,18.8333330526948" />
+        <NodeLayout
+          Size="114.4,41.6"
+          Id="Package\DFT_Load_FactGeneration\Unpivot"
+          TopLeft="425.833326987922,90.9999986340602" />
+        <EdgeLayout
+          Id="Package\DFT_Load_FactGeneration.Paths[OLE DB Source Output]"
+          TopLeft="486.166660405695,60.4333330526948">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.5666655813655"
+              Start="0,0"
+              End="0,23.0666655813655">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.0666655813655" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\DFT_Load_FactGeneration\Lookup"
+          TopLeft="431.666660234332,165.999997516473" />
+        <EdgeLayout
+          Id="Package\DFT_Load_FactGeneration.Paths[Unpivot Output]"
+          TopLeft="485.549993611127,132.59999863406">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.3999988824129"
+              Start="0,0"
+              End="0,25.8999988824129">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.8999988824129" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_Load_FactGeneration\OLE DB Destination"
+          TopLeft="264.999996051192,245.99999632438" />
+        <EdgeLayout
+          Id="Package\DFT_Load_FactGeneration.Paths[Lookup Match Output]"
+          TopLeft="488.066660234332,207.599997516473">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-137.86666418314,38.3999988079071"
+              Start="0,0"
+              End="-137.86666418314,30.8999988079071">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1999994039536" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.1999994039536"
+                    Point2="0,19.1999994039536"
+                    Point3="-4,19.1999994039536" />
+                  <mssgle:LineSegment
+                    End="-133.86666418314,19.1999994039536" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-133.86666418314,19.1999994039536"
+                    Point2="-137.86666418314,19.1999994039536"
+                    Point3="-137.86666418314,23.1999994039536" />
+                  <mssgle:LineSegment
+                    End="-137.86666418314,30.8999988079071" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-117.12471881032,24.1999994039536,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactGeneration\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactGeneration\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_FactGeneration\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

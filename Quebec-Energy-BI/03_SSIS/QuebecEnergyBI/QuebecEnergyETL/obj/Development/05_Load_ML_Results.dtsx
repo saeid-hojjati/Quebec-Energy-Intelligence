@@ -1,0 +1,2223 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/11/2026 9:55:43 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ADRIAN"
+  DTS:CreatorName="ADRIAN\saeid"
+  DTS:DTSID="{9239E136-84CF-41E1-B861-CA97E2068978}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{0A69AE6C-685E-4A4E-8383-57FADDCD4D3C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CM_CSV_ML_Forecast]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{9671DBE1-4E77-4070-AB79-36C0D684E82C}"
+      DTS:ObjectName="CM_CSV_ML_Forecast">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="4105"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="G:\Business intelligent\1-Business inteligence-Course\13-Stage\Quebec-Energy-BI\01_Data\Energy_Forecast_2025.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HourUTC"
+              DTS:DTSID="{78AF8E9D-804A-4E2C-B50F-747CD90A895A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FullDate"
+              DTS:DTSID="{DFF0B328-5150-4AF7-8807-F2C25785DF33}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CalendarYear"
+              DTS:DTSID="{E772FADA-5D40-459A-99DD-D0FCBBA16814}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CalendarMonth"
+              DTS:DTSID="{EC09296D-00AB-47DD-BA2D-0303C9BEB61B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MonthShort"
+              DTS:DTSID="{BD83F360-3CA6-4ED2-ABA8-18AE783D3BE4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LocalHour"
+              DTS:DTSID="{1CBE568B-487D-4A34-A3AD-69326F87466A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Model"
+              DTS:DTSID="{3C38726C-FD52-4772-B19C-5AD1ED6A2B16}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ActualDemandMW"
+              DTS:DTSID="{28F506B4-4F93-4C0D-BFCC-4A9654FBBDAC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PredictedDemandMW"
+              DTS:DTSID="{93371814-3D5D-4592-A9B9-ACF2C2F05685}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorMW"
+              DTS:DTSID="{56CA1AD2-1F1A-45CD-AA26-5E45A26D326B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AbsoluteErrorMW"
+              DTS:DTSID="{F7C6A90D-56CD-48E8-AEE7-FD2040D8B09A}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CM_CSV_Model_Performance]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{24070DBA-B6D2-49B6-BD6E-9EF23AA7E6F5}"
+      DTS:ObjectName="CM_CSV_Model_Performance">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="4105"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="G:\Business intelligent\1-Business inteligence-Course\13-Stage\Quebec-Energy-BI\01_Data\Model_Comparison_2025.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Model"
+              DTS:DTSID="{0681B2B2-5CD9-4837-9AD3-90F8FEC4314D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MAE"
+              DTS:DTSID="{2E5390E2-DC79-49A9-B522-993493C52A24}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RMSE"
+              DTS:DTSID="{DD455C18-3D03-4F69-8C5C-080F25794299}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="R2"
+              DTS:DTSID="{F9F2A5E6-FAB0-4D7A-B128-0101CAA37FCB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TestYear"
+              DTS:DTSID="{294C34DA-50C2-42A4-BBF6-E20B5E07873B}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_Forecast_Hourly"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C9760016-28D5-489C-B63B-963FF85E5457}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_Forecast_Hourly"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_Forecast_Hourly\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input].Columns[HourUTC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="HourUTC"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[HourUTC]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input].Columns[FullDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FullDate"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[FullDate]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input].Columns[CalendarYear]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CalendarYear"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[CalendarYear]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input].Columns[CalendarMonth]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CalendarMonth"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[CalendarMonth]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input].Columns[MonthShort]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MonthShort"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[MonthShort]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input].Columns[LocalHour]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="LocalHour"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[LocalHour]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input].Columns[Model]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Model"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[Model]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input].Columns[ActualDemandMW]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ActualDemandMW"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[ActualDemandMW]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input].Columns[PredictedDemandMW]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PredictedDemandMW"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[PredictedDemandMW]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input].Columns[ErrorMW]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ErrorMW"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[ErrorMW]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input].Columns[AbsoluteErrorMW]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AbsoluteErrorMW"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[AbsoluteErrorMW]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[HourUTC_Conv]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[HourUTC_Conv]"
+                      name="HourUTC_Conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[HourUTC]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[FullDate_Conv]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[FullDate_Conv]"
+                      name="FullDate_Conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[FullDate]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[CalendarYear_Conv]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[CalendarYear_Conv]"
+                      name="CalendarYear_Conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[CalendarYear]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[CalendarMonth_Conv]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[CalendarMonth_Conv]"
+                      name="CalendarMonth_Conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[CalendarMonth]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[MonthShort_Conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="3"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[MonthShort_Conv]"
+                      name="MonthShort_Conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[MonthShort]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[LocalHour_Conv]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[LocalHour_Conv]"
+                      name="LocalHour_Conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[LocalHour]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[Model_Conv]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[Model_Conv]"
+                      name="Model_Conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[Model]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[ActualDemandMW_Conv]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[ActualDemandMW_Conv]"
+                      name="ActualDemandMW_Conv"
+                      precision="20"
+                      scale="10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[ActualDemandMW]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[PredictedDemandMW_Conv]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[PredictedDemandMW_Conv]"
+                      name="PredictedDemandMW_Conv"
+                      precision="20"
+                      scale="10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[PredictedDemandMW]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[ErrorMW_Conv]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[ErrorMW_Conv]"
+                      name="ErrorMW_Conv"
+                      precision="20"
+                      scale="10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[ErrorMW]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[AbsoluteErrorMW]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[AbsoluteErrorMW]"
+                      name="AbsoluteErrorMW"
+                      precision="20"
+                      scale="10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[AbsoluteErrorMW]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Forecast_Hourly\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="4105"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_CSV_ML_Forecast]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_CSV_ML_Forecast]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[HourUTC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[HourUTC]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[HourUTC]"
+                      name="HourUTC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[FullDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FullDate]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[FullDate]"
+                      name="FullDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[CalendarYear]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CalendarYear]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[CalendarYear]"
+                      name="CalendarYear"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[CalendarMonth]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CalendarMonth]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[CalendarMonth]"
+                      name="CalendarMonth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[MonthShort]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MonthShort]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[MonthShort]"
+                      name="MonthShort"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[LocalHour]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LocalHour]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[LocalHour]"
+                      name="LocalHour"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[Model]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Model]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[Model]"
+                      name="Model"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[ActualDemandMW]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ActualDemandMW]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[ActualDemandMW]"
+                      name="ActualDemandMW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[PredictedDemandMW]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PredictedDemandMW]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[PredictedDemandMW]"
+                      name="PredictedDemandMW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[ErrorMW]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ErrorMW]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[ErrorMW]"
+                      name="ErrorMW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[AbsoluteErrorMW]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AbsoluteErrorMW]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[AbsoluteErrorMW]"
+                      name="AbsoluteErrorMW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[HourUTC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="HourUTC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[FullDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FullDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CalendarYear]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CalendarYear" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CalendarMonth]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CalendarMonth" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MonthShort]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MonthShort" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[LocalHour]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LocalHour" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Model]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Model" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ActualDemandMW]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ActualDemandMW" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PredictedDemandMW]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PredictedDemandMW" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ErrorMW]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ErrorMW" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AbsoluteErrorMW]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AbsoluteErrorMW" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ml].[ForecastHourly]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ActualDemandMW]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ActualDemandMW"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActualDemandMW]"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output].Columns[ActualDemandMW]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HourUTC_Conv]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="HourUTC_Conv"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTC]"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[HourUTC_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FullDate_Conv]"
+                      cachedDataType="dbDate"
+                      cachedName="FullDate_Conv"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullDate]"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[FullDate_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CalendarYear_Conv]"
+                      cachedDataType="i2"
+                      cachedName="CalendarYear_Conv"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalendarYear]"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[CalendarYear_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CalendarMonth_Conv]"
+                      cachedDataType="ui1"
+                      cachedName="CalendarMonth_Conv"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalendarMonth]"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[CalendarMonth_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MonthShort_Conv]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="MonthShort_Conv"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthShort]"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[MonthShort_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LocalHour_Conv]"
+                      cachedDataType="ui1"
+                      cachedName="LocalHour_Conv"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocalHour]"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[LocalHour_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Model_Conv]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Model_Conv"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Model]"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[Model_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PredictedDemandMW_Conv]"
+                      cachedDataType="numeric"
+                      cachedName="PredictedDemandMW_Conv"
+                      cachedPrecision="20"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PredictedDemandMW]"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[PredictedDemandMW_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ErrorMW_Conv]"
+                      cachedDataType="numeric"
+                      cachedName="ErrorMW_Conv"
+                      cachedPrecision="20"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorMW]"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[ErrorMW_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AbsoluteErrorMW]"
+                      cachedDataType="numeric"
+                      cachedName="AbsoluteErrorMW"
+                      cachedPrecision="20"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AbsoluteErrorMW]"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output].Columns[AbsoluteErrorMW]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HourUTC]"
+                      dataType="dbTimeStamp2"
+                      name="HourUTC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullDate]"
+                      dataType="dbDate"
+                      name="FullDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalendarYear]"
+                      dataType="i2"
+                      name="CalendarYear" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalendarMonth]"
+                      dataType="ui1"
+                      name="CalendarMonth" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthShort]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="MonthShort" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocalHour]"
+                      dataType="ui1"
+                      name="LocalHour" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Model]"
+                      dataType="wstr"
+                      length="100"
+                      name="Model" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActualDemandMW]"
+                      dataType="numeric"
+                      name="ActualDemandMW"
+                      precision="20"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PredictedDemandMW]"
+                      dataType="numeric"
+                      name="PredictedDemandMW"
+                      precision="20"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorMW]"
+                      dataType="numeric"
+                      name="ErrorMW"
+                      precision="20"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AbsoluteErrorMW]"
+                      dataType="numeric"
+                      name="AbsoluteErrorMW"
+                      precision="20"
+                      scale="10" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_Forecast_Hourly.Paths[Data Conversion Output]"
+              endId="Package\DFT_Load_Forecast_Hourly\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DFT_Load_Forecast_Hourly.Paths[Flat File Source Output]"
+              endId="Package\DFT_Load_Forecast_Hourly\Data Conversion.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT_Load_Forecast_Hourly\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_Model_Performance"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8D61CD91-93A5-4780-A801-B719DB8B1D45}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_Model_Performance"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_Model_Performance\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Model_Performance\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Inputs[Data Conversion Input].Columns[Model]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Model"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[Model]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Inputs[Data Conversion Input].Columns[MAE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MAE"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[MAE]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Inputs[Data Conversion Input].Columns[RMSE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="RMSE"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[RMSE]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Inputs[Data Conversion Input].Columns[R2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="R2"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[R2]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Inputs[Data Conversion Input].Columns[TestYear]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TestYear"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[TestYear]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT_Load_Model_Performance\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[Model_Conv]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[Model_Conv]"
+                      name="Model_Conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[Model]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[MAE_Conv]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[MAE_Conv]"
+                      name="MAE_Conv"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[MAE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[RMSE_Conv]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[RMSE_Conv]"
+                      name="RMSE_Conv"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[RMSE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[R2_Conv]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[R2_Conv]"
+                      name="R2_Conv"
+                      precision="18"
+                      scale="8"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[R2]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[TestYear_Conv]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[TestYear_Conv]"
+                      name="TestYear_Conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[TestYear]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT_Load_Model_Performance\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Model_Performance\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="4105"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Model_Performance\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_CSV_Model_Performance]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_CSV_Model_Performance]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[Model]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Model]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[Model]"
+                      name="Model"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[MAE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MAE]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[MAE]"
+                      name="MAE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[RMSE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[RMSE]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[RMSE]"
+                      name="RMSE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[R2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[R2]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[R2]"
+                      name="R2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[TestYear]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TestYear]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].Columns[TestYear]"
+                      name="TestYear"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Model]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Model" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MAE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MAE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[RMSE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RMSE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[R2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="R2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TestYear]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TestYear" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Model_Performance\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ml].[ModelPerformance]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{62393909-96F6-4C30-B394-48E2E6742C03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ADRIAN_MSSQL.test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TestYear_Conv]"
+                      cachedDataType="i2"
+                      cachedName="TestYear_Conv"
+                      externalMetadataColumnId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TestYear]"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[TestYear_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Model_Conv]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Model_Conv"
+                      externalMetadataColumnId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Model]"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[Model_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MAE_Conv]"
+                      cachedDataType="numeric"
+                      cachedName="MAE_Conv"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MAE]"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[MAE_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RMSE_Conv]"
+                      cachedDataType="numeric"
+                      cachedName="RMSE_Conv"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RMSE]"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[RMSE_Conv]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[R2_Conv]"
+                      cachedDataType="numeric"
+                      cachedName="R2_Conv"
+                      cachedPrecision="18"
+                      cachedScale="8"
+                      externalMetadataColumnId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[R2]"
+                      lineageId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output].Columns[R2_Conv]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TestYear]"
+                      dataType="i2"
+                      name="TestYear" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Model]"
+                      dataType="wstr"
+                      length="100"
+                      name="Model" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MAE]"
+                      dataType="numeric"
+                      name="MAE"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RMSE]"
+                      dataType="numeric"
+                      name="RMSE"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[R2]"
+                      dataType="numeric"
+                      name="R2"
+                      precision="12"
+                      scale="8" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Model_Performance\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Model_Performance\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Model_Performance\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_Model_Performance.Paths[Data Conversion Output]"
+              endId="Package\DFT_Load_Model_Performance\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT_Load_Model_Performance\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DFT_Load_Model_Performance.Paths[Flat File Source Output]"
+              endId="Package\DFT_Load_Model_Performance\Data Conversion.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT_Load_Model_Performance\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Clear_ML_Forecast"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B13F3AA5-0346-4AAA-B1E6-97E656521C89}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Clear_ML_Forecast"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;TRUNCATE TABLE ml.ForecastHourly;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Clear_ML_Performance"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D7E2A933-673F-45D5-BDBA-7A7803890B8D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Clear_ML_Performance"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;TRUNCATE TABLE ml.ModelPerformance;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Validate_ML_Forecast"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5CB275CE-E042-45AB-B531-930C6A0DDADC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Validate_ML_Forecast"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;IF (&#xA;    SELECT COUNT(*)&#xA;    FROM ml.ForecastHourly&#xA;) &lt;&gt; 8590&#xA;BEGIN&#xA;    THROW 51001,&#xA;        'ML Forecast validation failed: expected 8590 rows.',&#xA;        1;&#xA;END;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Validate_ML_Performance"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0AE70335-37C5-4A60-B250-6DD8BAC95612}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Validate_ML_Performance"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{62393909-96F6-4C30-B394-48E2E6742C03}"
+          SQLTask:SqlStatementSource="&#xA;-- Validate Model Performance results&#xA;&#xA;IF (&#xA;    SELECT COUNT(*)&#xA;    FROM ml.ModelPerformance&#xA;) &lt;&gt; 3&#xA;BEGIN&#xA;    THROW 51002,&#xA;        'ML Performance validation failed: expected 3 rows.',&#xA;        1;&#xA;END;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C829ED9E-F2C0-40B2-85A3-82ED01DD7615}"
+      DTS:From="Package\DFT_Load_Forecast_Hourly"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL_Validate_ML_Forecast" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{6AD4AA80-EBBE-410B-BA2F-C527B263126B}"
+      DTS:From="Package\SQL_Clear_ML_Forecast"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT_Load_Forecast_Hourly" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{0A0E9F94-E762-4522-ABFD-3C47D313E105}"
+      DTS:From="Package\SQL_Validate_ML_Forecast"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL_Clear_ML_Performance" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{D35275CF-A2D3-453A-8E4E-8F716C489768}"
+      DTS:From="Package\SQL_Clear_ML_Performance"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\DFT_Load_Model_Performance" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{7D94C5EC-2627-4E19-8215-61D0BE73F72F}"
+      DTS:From="Package\DFT_Load_Model_Performance"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\SQL_Validate_ML_Performance" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="208,50.4"
+          Id="Package\DFT_Load_Forecast_Hourly"
+          TopLeft="179.285714667367,74.9411764048994" />
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\DFT_Load_Model_Performance"
+          TopLeft="462.857143842444,192.705882184027" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\SQL_Clear_ML_Forecast"
+          TopLeft="182.857143246398,10.705882343557" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="281.071428956882,52.305882343557">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,22.6352940613424"
+              Start="0,0"
+              End="0,15.1352940613424">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1352940613424" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\SQL_Validate_ML_Forecast"
+          TopLeft="180.000000383173,152.176470454847" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="283.04285752527,125.341176404899">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.8352940499473"
+              Start="0,0"
+              End="0,19.3352940499473">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3352940499473" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\SQL_Clear_ML_Performance"
+          TopLeft="175.000000372529,219.47058804292" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="281.700000377851,193.776470454847">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.6941175880729"
+              Start="0,0"
+              End="0,18.1941175880729">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.1941175880729" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="386.200000372529,240.27058804292">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="76.6571434699154,-26.7647058588927"
+              Start="0,0"
+              End="69.1571434699154,-26.7647058588927">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.3285717349577,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.3285717349577,0"
+                    Point2="38.3285717349577,0"
+                    Point3="38.3285717349577,-4" />
+                  <mssgle:LineSegment
+                    End="38.3285717349577,-22.7647058588927" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.3285717349577,-22.7647058588927"
+                    Point2="38.3285717349577,-26.7647058588927"
+                    Point3="42.3285717349577,-26.7647058588927" />
+                  <mssgle:LineSegment
+                    End="69.1571434699154,-26.7647058588927" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\SQL_Validate_ML_Performance"
+          TopLeft="462.857143842444,262.294117417148" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="575.257143842444,234.305882184027">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.988235233121"
+              Start="0,0"
+              End="0,20.488235233121">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.488235233121" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load_Forecast_Hourly">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\DFT_Load_Forecast_Hourly\Flat File Source"
+          TopLeft="352.142857892477,21.4117646871141" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\DFT_Load_Forecast_Hourly\Data Conversion"
+          TopLeft="357.14285790312,96.3529410920135" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Forecast_Hourly.Paths[Flat File Source Output]"
+          TopLeft="431.042857897799,63.0117646871141">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.3411764048994"
+              Start="0,0"
+              End="0,25.8411764048994">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.8411764048994" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_Load_Forecast_Hourly\OLE DB Destination"
+          TopLeft="350.714286460864,175.882352787009" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Forecast_Hourly.Paths[Data Conversion Output]"
+          TopLeft="435.328572181992,137.952941092014">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.9294116949952"
+              Start="0,0"
+              End="0,30.4294116949952">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.4294116949952" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT_Load_Model_Performance">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\DFT_Load_Model_Performance\Flat File Source"
+          TopLeft="373.833327762783,14.1666664555669" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\DFT_Load_Model_Performance\Data Conversion"
+          TopLeft="372.499994449318,99.1666651889682" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Model_Performance.Paths[Flat File Source Output]"
+          TopLeft="449.56666110605,55.7666664555669">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.3999987334013"
+              Start="0,0"
+              End="0,35.8999987334013">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.8999987334013" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_Load_Model_Performance\OLE DB Destination"
+          TopLeft="372.499994449318,185.833330564201" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Model_Performance.Paths[Data Conversion Output]"
+          TopLeft="453.899994449318,140.766665188968">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.0666653752327"
+              Start="0,0"
+              End="0,37.5666653752327">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5666653752327" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Forecast_Hourly\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Model_Performance\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
