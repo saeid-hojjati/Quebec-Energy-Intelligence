@@ -59,18 +59,18 @@ The 7-day and 14-day models improved MAE against their respective seasonal naïv
 ## Power BI Dashboard Gallery
 
 ### 1. Executive Energy Overview
-![Executive Energy Overview](Quebec-Energy-BI/05_Dashbord/01_Overview.png)
+![Executive Energy Overview](Quebec-Energy-BI/05_%D9%90Dashbord/01_Overview.png)
 
 ### 2. Generation & Energy Mix
-![Generation & Energy Mix](Quebec-Energy-BI/05_Dashbord/02_Generation_Energy_Mix.png)
+![Generation & Energy Mix](Quebec-Energy-BI/05_%D9%90Dashbord/02_Generation_Energy_Mix.png)
 
 ### 3. Weather & Demand Insights
-![Weather & Demand Insights](Quebec-Energy-BI/05_Dashbord/03_Weather_Demand.png)
+![Weather & Demand Insights](Quebec-Energy-BI/05_%D9%90Dashbord/03_Weather_Demand.png)
 
 ### 4. AI Demand Forecasting
-![AI Demand Forecasting](Quebec-Energy-BI/05_Dashbord/04_AI_Forecasting.png)
+![AI Demand Forecasting](Quebec-Energy-BI/05_%D9%90Dashbord/04_AI_Forecasting.png)
 
 ### 5. Future Electricity Demand
-![Future Demand Forecast Simulation](Quebec-Energy-BI/05_Dashbord/05_Future_Demand.png)
+![Future Demand Forecast Simulation](Quebec-Energy-BI/05_%D9%90Dashbord/05_Future_Demand.png)
 
-*The future demand page displays a historical forecast simulation, not a live forecast.*
+*The future demand page presents a historical forecast simulation, not a live operational forecast.*
