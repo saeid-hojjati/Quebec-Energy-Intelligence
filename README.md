@@ -57,28 +57,22 @@ The 7-day and 14-day models improved MAE against their respective seasonal naïv
 - The current solution uses historical datasets and a manually executed ETL/ML workflow rather than a continuously automated production pipeline.
 
 
+
 ## Power BI Dashboard Gallery
 
 ### 1. Executive Energy Overview
-![Executive Energy Overview](Quebec-Energy-BI/05_Dashboard/01_Overview.png)
+![Executive Energy Overview](https://raw.githubusercontent.com/saeid-hojjati/Quebec-Energy-Intelligence/main/Quebec-Energy-BI/05_Dashboard/01_Overview.png)
 
 ### 2. Generation & Energy Mix
-![Generation & Energy Mix](Quebec-Energy-BI/05_Dashboard/02_Generation_Energy_Mix.png)
+![Generation & Energy Mix](https://raw.githubusercontent.com/saeid-hojjati/Quebec-Energy-Intelligence/main/Quebec-Energy-BI/05_Dashboard/02_Generation_Energy_Mix.png)
 
 ### 3. Weather & Demand Insights
-![Weather & Demand Insights](Quebec-Energy-BI/05_Dashboard/03_Weather_Demand.png)
+![Weather & Demand Insights](https://raw.githubusercontent.com/saeid-hojjati/Quebec-Energy-Intelligence/main/Quebec-Energy-BI/05_Dashboard/03_Weather_Demand.png)
 
 ### 4. AI Demand Forecasting
-![AI Demand Forecasting](Quebec-Energy-BI/05_Dashboard/04_AI_Forecasting.png)
+![AI Demand Forecasting](https://raw.githubusercontent.com/saeid-hojjati/Quebec-Energy-Intelligence/main/Quebec-Energy-BI/05_Dashboard/04_AI_Forecasting.png)
 
 ### 5. Future Electricity Demand
-![Future Demand Forecast Simulation](Quebec-Energy-BI/05_Dashboard/05_Future_Demand.png)
-
-*The future demand page displays a historical forecast simulation, not a live forecast.*
+![Future Demand Forecast Simulation](https://raw.githubusercontent.com/saeid-hojjati/Quebec-Energy-Intelligence/main/Quebec-Energy-BI/05_Dashboard/05_Future_Demand.png)
   
-
-## Portfolio
-
-Screenshots, technical documentation, SQL scripts, SSIS packages, and Python source code will be organized within this repository.
-
-*This is an educational and portfolio project, not an official Hydro-Québec forecasting service.*
+*The future demand page displays a historical forecast simulation, not a live forecast.*
